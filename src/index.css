@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Light (default): warm parchment. Dark overrides live under html.dark. */
+body {
+  font-family: 'Spectral', Georgia, 'Times New Roman', serif;
+  background-color: #efe6d2;
+  color: #2a2018;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+html.dark body {
+  background-color: #0d0a08;
+  color: #f4ecdd;
+  color-scheme: dark;
+}
+
+/* Ambient light wash, with a faint checker texture drifting behind everything */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px 700px at 75% -10%, rgba(212, 165, 66, 0.16), transparent 60%),
+    radial-gradient(900px 650px at 0% 110%, rgba(140, 80, 45, 0.08), transparent 60%),
+    conic-gradient(rgba(120, 90, 50, 0.03) 0 25%, transparent 0 50%, rgba(120, 90, 50, 0.03) 0 75%, transparent 0);
+  background-size: auto, auto, 120px 120px;
+}
+
+/* Dark: ambient candlelight */
+html.dark body::before {
+  background:
+    radial-gradient(1100px 700px at 75% -10%, rgba(212, 165, 66, 0.09), transparent 60%),
+    radial-gradient(900px 650px at 0% 110%, rgba(140, 80, 45, 0.1), transparent 60%),
+    conic-gradient(rgba(244, 236, 221, 0.016) 0 25%, transparent 0 50%, rgba(244, 236, 221, 0.016) 0 75%, transparent 0);
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(184, 134, 47, 0.4);
+  color: #1e1712;
+}
+html.dark ::selection {
+  background: rgba(212, 165, 66, 0.35);
+  color: #fff;
+}
+
+/* Dark-mode <option> lists (Firefox/Chrome honor these) */
+html.dark select option,
+html.dark select optgroup {
+  background-color: #1d130c;
+  color: #f4ecdd;
+}
+
+/* Brass-tinted scrollbars */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212, 165, 66, 0.35) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(212, 165, 66, 0.3);
+  border-radius: 8px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 165, 66, 0.5);
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
